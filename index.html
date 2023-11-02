@@ -100,12 +100,8 @@
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
                     </p>
                     <div class="btn-box">
-                      <a href="subh expt 4.aedt" class="btn1">
-                        Contact 4 Us
-                      </a>
-                      <a href="expt05.aedt" class="btn2">
-                        About 5 Us
-                      </a>
+                      <a href="subh_expt_4.aedt" class="btn1" download="subh_expt_4.aedt">Contact Us</a>
+                      <a href="expt05.aedt" class="btn2" download="expt05.aedt">About Us</a>
                     </div>
                   </div>
                 </div>
@@ -697,7 +693,27 @@
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
   <!-- End Google Map -->
+  <script>
+    // JavaScript to prevent the default link behavior and trigger the download
+    const buttons = document.querySelectorAll('.btn-box a');
 
+    buttons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const fileUrl = this.getAttribute('href');
+            const fileName = this.getAttribute('download');
+
+            const link = document.createElement('a');
+            link.href = fileUrl;
+            link.download = fileName;
+            link.style.display = 'none';
+
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    });
+</script>
 </body>
 
 </html>
